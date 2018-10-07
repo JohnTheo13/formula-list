@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import FlexContainer from './FlexContainer'
 import { mapStateToProps, mapDispatchToprops } from './stateToProps'
 import ListContainer from '../../components/ListContainer'
+import { PromtChoose } from './components'
 
 class Formula extends Component {
   constructor (props) {
@@ -17,16 +18,23 @@ class Formula extends Component {
 
   render () {
     const { favourite } = this.state,
-          { seasonList: { list } } = this.props;
+          { seasons, drivers } = this.props;
     return (
       <FlexContainer>
         <div>
-          {list &&
-            <ListContainer list={list} name="Seasons" />
+          {seasons.list &&
+            <ListContainer
+              list={seasons.list}
+              name="Seasons"
+              getDrivers={this.props.getDrivers}
+            />
           }
         </div>
         <div>
-          <button onClick={() => this.setState({favourite: !favourite})} >SKATA2</button>
+          {drivers.list
+            ? <ListContainer list={drivers.list} name="Drivers" />
+            : <PromtChoose>Choose Season</PromtChoose>
+          }
         </div>
         {favourite &&
           <div>SKATA3</div>

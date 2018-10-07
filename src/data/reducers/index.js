@@ -1,2 +1,3 @@
-import seasonList from './formula'
-export { seasonList }
+import seasons from './seasons'
+import drivers from './drivers'
+export { seasons, drivers }

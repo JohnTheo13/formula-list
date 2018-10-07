@@ -1,4 +1,4 @@
-import * as type from './actionTypes'
+import { FETCHING_DRIVERS, FETCHED_DRIVERS, FAILED_FETCH_DRIVERS } from './actionTypes'
 
 const initial = {
   isfetching: false,
@@ -6,21 +6,21 @@ const initial = {
   failedFetch: false
 }
 
-const seasonList = (state = initial, action) => {
+const drivers = (state = initial, action) => {
   switch (action.type) {
-    case type.START_FETCHING_SEASONS:
+    case FETCHING_DRIVERS:
       return {
         ...state,
         isfetching: true,
       }
-    case type.FETCHED_SEASONS:
+    case FETCHED_DRIVERS:
       return {
         ...state,
         isfetching:false,
         fetched: true,
-        list: action.payload
+        driversList: action.payload
       }
-    case type.FAILED_FETCH:
+    case FAILED_FETCH_DRIVERS:
       return {
         ...state,
         isfetching: false,
@@ -32,4 +32,4 @@ const seasonList = (state = initial, action) => {
   }
 }
 
-export default seasonList
+export default drivers
