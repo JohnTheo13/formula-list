@@ -7,13 +7,14 @@ const Header = styled.header`
   text-align: center;
   font-size: 32px;
   line-height: 1.5;
+  height: 60px;
+  width: 100%;
   box-shadow: 0px 2px #d2d2d2;
-  margin-bottom: 34px;
 `
 
 Header.defaultProps = {
   theme: {
-    headerBack: '#fc7e00',
+    headerBack: '#000000',
     headerText: '#ffffff'
   }
 }
