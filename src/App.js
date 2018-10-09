@@ -8,7 +8,7 @@ import Image from './components/Image'
 const App = () => (
   <Provider store={store}>
       <div>
-        <Header>Project here</Header>
+        <Header logo="/images/logo.png">Application</Header>
         <Image />
         <Formula />
       </div>
