@@ -6,7 +6,7 @@ import DropdownMenu from './DropdownMenu';
 
 const Dropdown = styled.div`
   position: relative;
-  height: fit-content;
+  height: 100%;
   ${props =>
     props.isOpen &&
     css`

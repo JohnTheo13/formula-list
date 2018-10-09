@@ -8,7 +8,6 @@ const animation =  keyframes`
   100% {
     opacity: 1;
     transform: translateX(0);
-
   }
 `
 

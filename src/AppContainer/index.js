@@ -5,7 +5,6 @@ import { mapStateToProps, mapDispatchToprops } from './stateToProps'
 import ListContainer from '../components/ListContainer'
 import { PromtChoose } from './components'
 import Tabs from '../components/Tabs'
-import StyledContainer from './StyledContainer'
 
 class AppContainer extends Component {
   constructor (props) {
@@ -23,8 +22,13 @@ class AppContainer extends Component {
     const { favourite } = this.state,
           { seasons, drivers } = this.props;
     return (
-      <StyledContainer>
-        {seasons.fetched && <Tabs list={seasons.list}/>}
+      <div>
+        {seasons.fetched &&
+          <Tabs
+            list={seasons.list}
+            getDrivers={this.props.getDrivers}
+          />
+        }
           {drivers.list
             ? <ListContainer list={drivers.list} name="Drivers" />
             : <PromtChoose />
@@ -32,7 +36,7 @@ class AppContainer extends Component {
         {favourite &&
           <div>SKATA3</div>
         }
-      </StyledContainer>
+      </div>
     )
   }
 }

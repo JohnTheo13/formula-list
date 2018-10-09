@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToprops = dispatch => ({
   getSeasons: url => dispatch(getSeasons(url)),
-  getDrivers: () => dispatch(getDrivers())
+  getDrivers: url => dispatch(getDrivers(url))
 })
 
 export { mapStateToProps, mapDispatchToprops }

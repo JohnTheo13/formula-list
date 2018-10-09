@@ -14,6 +14,4 @@ const DropdownMenu = styled.div`
   border:epx solid grey;
 `
 
-DropdownMenu.defaultProps = {}
-
 export default DropdownMenu

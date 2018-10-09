@@ -11,8 +11,7 @@ const DropdownItem = styled.div`
   white-space: nowrap;
   background: none;
   border: 0;
+  cursor: pointer;
 `
-
-DropdownItem.defaultProps = {};
 
 export default DropdownItem;

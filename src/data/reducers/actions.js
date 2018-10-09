@@ -18,7 +18,7 @@ const getSeasons = url => dispatch => {
 
 const getDrivers = url => dispatch => {
   dispatch(startfetchig('DRIVERS'))
-  get('2018/driverStandings.json') //url
+  get(`${url}/driverStandings.json`) //url
     .then(({MRData: { StandingsTable: { StandingsLists: [standing]  }}}) =>
       dispatch(fetchedSeasons('DRIVERS', standing.DriverStandings))
     )
