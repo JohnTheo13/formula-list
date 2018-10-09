@@ -1,4 +1,4 @@
-import { getSeasons, getDrivers } from '../../data/reducers/actions'
+import { getSeasons, getDrivers } from '../data/reducers/actions'
 
 const mapStateToProps = state => ({
   seasons: state.seasons,

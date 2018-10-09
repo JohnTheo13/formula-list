@@ -2,12 +2,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToprops } from './stateToProps'
-import ListContainer from '../../components/ListContainer'
+import ListContainer from '../components/ListContainer'
 import { PromtChoose } from './components'
-import Dropdown from '../../components/Dropdown'
-import Tabs from '../../components/Tabs'
+import Tabs from '../components/Tabs'
+import StyledContainer from './StyledContainer'
 
-class Formula extends Component {
+class AppContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -23,7 +23,7 @@ class Formula extends Component {
     const { favourite } = this.state,
           { seasons, drivers } = this.props;
     return (
-      <div>
+      <StyledContainer>
         {seasons.fetched && <Tabs list={seasons.list}/>}
           {drivers.list
             ? <ListContainer list={drivers.list} name="Drivers" />
@@ -32,9 +32,9 @@ class Formula extends Component {
         {favourite &&
           <div>SKATA3</div>
         }
-      </div>
+      </StyledContainer>
     )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToprops)(Formula)
+export default connect(mapStateToProps, mapDispatchToprops)(AppContainer)
