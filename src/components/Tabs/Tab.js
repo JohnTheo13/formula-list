@@ -1,5 +1,5 @@
 // @ flow
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 type TabType = {
   activeIndex: number,
@@ -7,8 +7,13 @@ type TabType = {
 }
 
 const Tab = styled.div`
-  width: 100%
-  border-bottom: ${(props: TabType) => props.activeIndex === props.index && '1px solid #000000'};
+  width: 100%;
+  ${(props: TabType) => props.activeIndex === props.index &&
+    css`
+      border-bottom: 1px solid #000000;
+      background-color: grey;
+    `
+  };
   line-height: 1.8;
   cursor: pointer;
 `

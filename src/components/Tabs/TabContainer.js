@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const TabContainer = styled.div`
   display: flex;
-  background-color: grey;
+  background-color: #cccbcb;
   justify-content: space-around;
   height: 30px;
   text-align: center;

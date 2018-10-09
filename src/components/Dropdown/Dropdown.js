@@ -1,6 +1,4 @@
 import styled, { css } from 'styled-components';
-
-import DropdownHeader from './DropdownHeader';
 import DropdownItem from './DropdownItem';
 import DropdownMenu from './DropdownMenu';
 
@@ -17,7 +15,6 @@ const Dropdown = styled.div`
     `};
 `;
 
-Dropdown.Header = DropdownHeader;
 Dropdown.Item = DropdownItem;
 Dropdown.Menu = DropdownMenu;
 

@@ -22,7 +22,9 @@ class AppContainer extends Component {
     const { favourite } = this.state,
           { seasons, drivers } = this.props;
     return (
-      <div>
+      <div><i className="material-icons">
+star_rate
+</i>
         {seasons.fetched &&
           <Tabs
             list={seasons.list}

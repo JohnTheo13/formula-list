@@ -3,14 +3,14 @@ import styled from 'styled-components'
 const DropdownItem = styled.div`
   display: block;
   width: 100%;
-  padding: 8px;
+  padding: 8px 0;
   clear: both;
   font-weight: 300;
-  color: red;
+  color: #ffffff;
   text-align: inherit;
   white-space: nowrap;
   background: none;
-  border: 0;
+  border-bottom: 1px solid;
   cursor: pointer;
 `
 

@@ -21,7 +21,10 @@ class Tabs extends Component<TabType> {
   }
 
   tabClick = index => {
-    this.setState({ activeIndex: index })
+    this.setState({
+      activeIndex: index,
+      isOpen: index === 1
+    })
   }
 
   seasonClick = season => {
