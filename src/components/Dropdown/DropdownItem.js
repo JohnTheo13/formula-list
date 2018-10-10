@@ -12,6 +12,9 @@ const DropdownItem = styled.div`
   background: none;
   border-bottom: 1px solid;
   cursor: pointer;
+  &:hover {
+    background-color: #cccbcb;
+  }
 `
 
 export default DropdownItem;

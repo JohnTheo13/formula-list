@@ -1,12 +1,14 @@
 import {
   FETCHING_,
   FETCED_,
-  FAILED_FETCH_ } from './actionTypes'
+  FAILED_FETCH_,
+  SEASON_CHANGE } from './actionTypes'
 import { get } from '../requests/api'
 
 const startfetchig = type => ({ type: FETCHING_[type] }),
       fetchedSeasons = (type, list) => ({ type: FETCED_[type], payload: list }),
-      failedFetch = type => ({ type: FAILED_FETCH_[type] });
+      failedFetch = type => ({ type: FAILED_FETCH_[type] }),
+      seasonChange = season => ({ type: SEASON_CHANGE, payload: season })
 
 const getSeasons = url => dispatch => {
   dispatch(startfetchig('SEASONS'))
@@ -16,10 +18,11 @@ const getSeasons = url => dispatch => {
     .catch(exception => dispatch(failedFetch('SEASONS')))
 }
 
-const getDrivers = url => dispatch => {
+const getDrivers = s => dispatch => {
   dispatch(startfetchig('DRIVERS'))
-  get(`${url}/driverStandings.json`) //url
-    .then(({MRData: { StandingsTable: { StandingsLists: [standing]  }}}) =>
+  dispatch(seasonChange(s))
+  get(`${s.season}/driverStandings.json`) //url
+    .then(({MRData: { StandingsTable: { StandingsLists: [standing] }}}) =>
       dispatch(fetchedSeasons('DRIVERS', standing.DriverStandings))
     )
     .catch(exception => dispatch(failedFetch('DRIVERS')))

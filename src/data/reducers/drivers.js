@@ -24,7 +24,8 @@ const drivers = (state = initial, action) => {
       return {
         ...state,
         isfetching: false,
-        failedFetch: true
+        failedFetch: true,
+        fetched: false
       }
     default:
       return state

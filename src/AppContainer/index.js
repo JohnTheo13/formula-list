@@ -14,29 +14,35 @@ class AppContainer extends Component {
     }
   }
 
+  favourite = val => { /* favourites tab is on/off */
+    this.setState({
+      favourite: val
+    })
+  }
+
   componentDidMount () {
     this.props.getSeasons('seasons.json?limit=30&offset=59');
   }
 
   render () {
     const { favourite } = this.state,
-          { seasons, drivers } = this.props;
+          { seasons, drivers, activeSeason } = this.props;
+          console.log(drivers);
     return (
-      <div><i className="material-icons">
-star_rate
-</i>
+      <div>
         {seasons.fetched &&
           <Tabs
             list={seasons.list}
             getDrivers={this.props.getDrivers}
+            favourite={this.favourite}
+            activeSeason={activeSeason}
           />
         }
-          {drivers.list
-            ? <ListContainer list={drivers.list} name="Drivers" />
+        {!favourite
+          ? drivers.fetched
+            ? <ListContainer list={drivers.driversList} name="Drivers" />
             : <PromtChoose />
-          }
-        {favourite &&
-          <div>SKATA3</div>
+          : <div>SKATA3</div>
         }
       </div>
     )

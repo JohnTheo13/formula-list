@@ -15,8 +15,7 @@ class Tabs extends Component<TabType> {
     super (props)
     this.state = {
       isOpen: false,
-      activeIndex: 0,
-      activeSeason: undefined
+      activeIndex: 0
     }
   }
 
@@ -25,14 +24,14 @@ class Tabs extends Component<TabType> {
       activeIndex: index,
       isOpen: index === 1
     })
+    this.props.favourite(index === 2)
   }
 
-  seasonClick = season => {
-    this.props.getDrivers(season)
+  seasonClick = s => {
+    this.props.getDrivers(s)
     this.setState(({ isOpen }) => ({
       isOpen: !isOpen,
-      activeIndex: 1,
-      activeSeason: season
+      activeIndex: 1
     }));
   }
 
@@ -41,22 +40,23 @@ class Tabs extends Component<TabType> {
       isOpen: !isOpen,
       activeIndex: 1
     }));
+    this.props.favourite(false)
   }
 
   render () {
-    const { list } = this.props,
-          { isOpen, activeIndex, activeSeason } = this.state
+    const { list, activeSeason } = this.props,
+          { isOpen, activeIndex } = this.state
     return (
       <TabContainer>
         <Tab index={1} activeIndex={activeIndex}>
           <Dropdown isOpen={isOpen}>
             <div onClick={this.toggleDropdown} style={{ height: '100%'}}>
-              {activeSeason ? activeSeason :'SEASONS'}
+              {activeSeason.season}
             </div>
             <Dropdown.Menu>
             {
-              list.map(e =>
-                <Dropdown.Item key={e.season} onClick={() => this.seasonClick(e.season)}>{e.season}</Dropdown.Item>
+              list.map(s =>
+                <Dropdown.Item key={s.season} onClick={() => this.seasonClick(s)}>{s.season}</Dropdown.Item>
               )
             }
             </Dropdown.Menu>

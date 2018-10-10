@@ -2,7 +2,8 @@ import { getSeasons, getDrivers } from '../data/reducers/actions'
 
 const mapStateToProps = state => ({
   seasons: state.seasons,
-  drivers: state.drivers
+  drivers: state.drivers,
+  activeSeason: state.activeSeason
 })
 
 const mapDispatchToprops = dispatch => ({
