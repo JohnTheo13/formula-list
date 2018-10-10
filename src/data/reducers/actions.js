@@ -22,8 +22,8 @@ const getDrivers = s => dispatch => {
   dispatch(startfetchig('DRIVERS'))
   dispatch(seasonChange(s))
   get(`${s.season}/driverStandings.json`) //url
-    .then(({MRData: { StandingsTable: { StandingsLists: [standing] }}}) =>
-      dispatch(fetchedSeasons('DRIVERS', standing.DriverStandings))
+    .then(({MRData: { StandingsTable: { StandingsLists: [{ DriverStandings }] }}}) =>
+      dispatch(fetchedSeasons('DRIVERS', DriverStandings))
     )
     .catch(exception => dispatch(failedFetch('DRIVERS')))
 }

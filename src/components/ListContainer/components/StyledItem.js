@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 const StyledItem = styled.div`
-  background-color: ${({chosen}) => chosen ? 'red' : 'transparent'};
   &:hover {
-    background-color: blue;
+    background-color: #d2d2d2;
   }
 `
 

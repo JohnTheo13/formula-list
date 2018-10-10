@@ -1,19 +1,18 @@
 // @flow
 import React, { Component } from 'react'
 import { StyledList, ListItem } from './components'
+import { DriversList } from '../../data/types'
 
-class ListContainer extends Component {
-
-  get = () => this.props.getDrivers();
+class ListContainer extends Component<DriversList> {
 
   render () {
-    const { list, name } = this.props
+    const { list, title } = this.props
+    console.log(list);
     return (
       <StyledList>
-        <button onClick={this.get}>click</button>
-        <h3>{name}</h3>
+        <div>Drivers for {title} season</div>
         {
-          list.map((e, index) => <ListItem name={e.season}  chosen={index === 0}/>)
+          list.map(e => <ListItem key={e.Driver.code} {...e} />)
         }
       </StyledList>
     )
