@@ -26,7 +26,7 @@ class AppContainer extends Component {
 
   render () {
     const { favourite } = this.state,
-          { seasons, drivers, activeSeason } = this.props;
+          { seasons, drivers, activeSeason, addDriverToStorage } = this.props;
     return (
       <div>
         {seasons.fetched &&
@@ -39,7 +39,11 @@ class AppContainer extends Component {
         }
         {!favourite
           ? drivers.fetched
-            ? <ListContainer list={drivers.driversList} title={activeSeason.season} />
+            ? <ListContainer
+                list={drivers.driversList}
+                title={activeSeason.season}
+                addDriverToStorage={addDriverToStorage}
+              />
             : <PromtChoose />
           : <div>SKATA3</div>
         }

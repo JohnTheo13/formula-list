@@ -62,7 +62,7 @@ class Tabs extends Component<TabType> {
             </Dropdown.Menu>
           </Dropdown>
         </Tab>
-        <Tab index={2} onClick={() =>this.tabClick(2)} activeIndex={activeIndex}>FAVOURITES</Tab>
+        <Tab index={2} onClick={() =>this.tabClick(2)} activeIndex={activeIndex}>FAVORITES</Tab>
       </TabContainer>
     )
   }

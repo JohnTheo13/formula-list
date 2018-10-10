@@ -1,4 +1,4 @@
-import { getSeasons, getDrivers } from '../data/reducers/actions'
+import { getSeasons, getDrivers, addDriverToStorage } from '../data/reducers/actions'
 
 const mapStateToProps = state => ({
   seasons: state.seasons,
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToprops = dispatch => ({
   getSeasons: url => dispatch(getSeasons(url)),
-  getDrivers: url => dispatch(getDrivers(url))
+  getDrivers: url => dispatch(getDrivers(url)),
+  addDriverToStorage: driver => dispatch(addDriverToStorage(driver))
 })
 
 export { mapStateToProps, mapDispatchToprops }

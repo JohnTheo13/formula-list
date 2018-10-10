@@ -1,11 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import { seasons, drivers, activeSeason } from '../reducers';
+import { seasons, drivers, activeSeason, favoriteDrivers } from '../reducers';
 
 const reducers = combineReducers({
   seasons,
   drivers,
-  activeSeason
+  activeSeason,
+  favoriteDrivers
 })
 
 const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__? window.__REDUX_DEVTOOLS_EXTENSION__() : {};

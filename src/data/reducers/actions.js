@@ -2,13 +2,18 @@ import {
   FETCHING_,
   FETCED_,
   FAILED_FETCH_,
-  SEASON_CHANGE } from './actionTypes'
+  SEASON_CHANGE,
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_FAVORITES } from './actionTypes'
 import { get } from '../requests/api'
+import { storageAvailable } from '../helpers'
 
 const startfetchig = type => ({ type: FETCHING_[type] }),
       fetchedSeasons = (type, list) => ({ type: FETCED_[type], payload: list }),
       failedFetch = type => ({ type: FAILED_FETCH_[type] }),
-      seasonChange = season => ({ type: SEASON_CHANGE, payload: season })
+      seasonChange = season => ({ type: SEASON_CHANGE, payload: season }),
+      addToFavorites = driver => ({ type: ADD_TO_FAVORITES, payload: driver }),
+      removeFromFavorites = driver => ({ type: REMOVE_FROM_FAVORITES, payload: driver })
 
 const getSeasons = url => dispatch => {
   dispatch(startfetchig('SEASONS'))
@@ -28,5 +33,11 @@ const getDrivers = s => dispatch => {
     .catch(exception => dispatch(failedFetch('DRIVERS')))
 }
 
+const addDriverToStorage = driver => dispatch => {
+  dispatch(addToFavorites(driver))
+  if (storageAvailable('localStorage')) {
+    console.log('exists')
+  }
+}
 
-export { getSeasons, getDrivers }
+export { getSeasons, getDrivers, addDriverToStorage }
