@@ -8,7 +8,6 @@ const favoriteDrivers = (state = [], action) => {
       return state
     default:
       return state
-
   }
 }
 

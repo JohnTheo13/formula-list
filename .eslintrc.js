@@ -27,7 +27,8 @@ module.exports = {
   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   "class-methods-use-this": 0,
   "one-var": ["error", "always"],
-  "arrow-parens": ["error", "never"]
+  "arrow-parens": ["error", "as-needed"],
+  "arrow-body-style": ["error", "never"]
   },
   overrides: [
     {
