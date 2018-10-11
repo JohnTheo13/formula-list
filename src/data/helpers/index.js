@@ -22,4 +22,8 @@ const storageAvailable = type => {
   }
 }
 
-export { storageAvailable }
+const checkFavoriteExists = (list, id) => {
+  list.filter(l => l.id === id)
+}
+
+export { storageAvailable, checkFavoriteExists }

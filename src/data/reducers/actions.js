@@ -7,6 +7,7 @@ import {
   REMOVE_FROM_FAVORITES } from './actionTypes'
 import { get } from '../requests/api'
 import { storageAvailable } from '../helpers'
+import store from '../store'
 
 const startfetchig = type => ({ type: FETCHING_[type] }),
       fetchedSeasons = (type, list) => ({ type: FETCED_[type], payload: list }),
@@ -34,9 +35,11 @@ const getDrivers = s => dispatch => {
 }
 
 const addDriverToStorage = driver => dispatch => {
-  dispatch(addToFavorites(driver))
+  const favoriteDrivers = store.getState().favoriteDrivers,
+        { Driver: driverId } =  driver
+  dispatch(addToFavorites({id: driverId, driver: driver}))
   if (storageAvailable('localStorage')) {
-    console.log('exists')
+    window.localStorage('favoriteDrivers', favoriteDrivers)
   }
 }
 
