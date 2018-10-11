@@ -5,23 +5,28 @@ import {
   SEASON_CHANGE,
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
+  GET_FROM_STORAGE,
 } from './actionTypes'
 import { get } from '../requests/api'
-import { storageAvailable } from '../helpers'
+import { storageAvailable, checkFavoriteExists } from '../helpers'
 import store from '../store'
 
 const startfetchig = type => ({ type: FETCHING_[type] }),
   fetchedSeasons = (type, list) => ({ type: FETCED_[type], payload: list }),
   failedFetch = type => ({ type: FAILED_FETCH_[type] }),
   seasonChange = season => ({ type: SEASON_CHANGE, payload: season }),
-  addToFavorites = driver => ({ type: ADD_TO_FAVORITES, payload: driver }),
-  removeFromFavorites = driver => ({ type: REMOVE_FROM_FAVORITES, payload: driver }),
+  updateFavorites = favorites => ({ type: ADD_TO_FAVORITES, payload: favorites }),
+  removeFromFavorites = favorites => ({ type: REMOVE_FROM_FAVORITES, payload: favorites }),
+  getFromStorage = favorites => ({ type: GET_FROM_STORAGE, payload: favorites }),
 
   getSeasons = url => dispatch => {
     dispatch(startfetchig('SEASONS'))
     get(url)
       .then(({ MRData: { SeasonTable: { Seasons } } }) => dispatch(fetchedSeasons('SEASONS', Seasons)))
-      .catch(exception => dispatch(failedFetch('SEASONS')))
+      .catch(ex => {
+        dispatch(failedFetch('SEASONS'))
+        console.error(ex)
+      })
   },
 
   getDrivers = s => dispatch => {
@@ -29,16 +34,35 @@ const startfetchig = type => ({ type: FETCHING_[type] }),
     dispatch(seasonChange(s))
     get(`${s.season}/driverStandings.json`) // url
       .then(({ MRData: { StandingsTable: { StandingsLists: [{ DriverStandings }] } } }) => dispatch(fetchedSeasons('DRIVERS', DriverStandings)))
-      .catch(exception => dispatch(failedFetch('DRIVERS')))
+      .catch(ex => {
+        dispatch(failedFetch('DRIVERS'))
+        console.error(ex)
+      })
   },
 
-  addDriverToStorage = driver => dispatch => {
+  updateDriversList = driver => dispatch => {console.log(driver);
     const { favoriteDrivers } = store.getState(),
-      { Driver: driverId } =  driver
-    dispatch(addToFavorites({id: driverId, driver: driver}))
-    if (storageAvailable('localStorage')) {
-      window.localStorage('favoriteDrivers', favoriteDrivers)
+      { Driver: { driverId } } = driver,
+      driverIndex = checkFavoriteExists(driverId, favoriteDrivers)
+      console.log(driverIndex);
+    if (driverIndex === -1) {
+      favoriteDrivers.push({ id: driverId, driver: { ...driver } })
+      dispatch(updateFavorites(favoriteDrivers))
+      if (storageAvailable('localStorage')) {
+        window.localStorage.setItem('favoriteDrivers', JSON.stringify(favoriteDrivers))
+      }
+    } else {
+      favoriteDrivers.splice(driverIndex, 1)
+      dispatch((removeFromFavorites(favoriteDrivers)))
+      if (storageAvailable('localStorage')) {
+        window.localStorage.setItem('favoriteDrivers', JSON.stringify(favoriteDrivers))
+      }
     }
   }
 
-export { getSeasons, getDrivers, addDriverToStorage }
+export {
+  getSeasons,
+  getDrivers,
+  updateDriversList,
+  getFromStorage,
+}

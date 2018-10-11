@@ -5,15 +5,14 @@ import { DriversList } from '../../data/types'
 
 class ListContainer extends Component<DriversList> {
 
-  render () {
-    const { list, title, addDriverToStorage } = this.props
-    console.log(list);
+  render() {
+    const { list, title, updateDriversList, favoriteDrivers } = this.props
     return (
       <StyledList>
         <div>Drivers for {title} season</div>
         <ListHeader />
         {
-          list.map(e => <ListItem key={e.Driver.code} driver={e} addDriverToStorage={addDriverToStorage} />)
+          list.map(e => <ListItem key={e.Driver.code} driver={e} updateDriversList={updateDriversList} favoriteDrivers={favoriteDrivers} />)
         }
       </StyledList>
     )

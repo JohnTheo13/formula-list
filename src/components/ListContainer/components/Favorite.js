@@ -4,14 +4,15 @@ import React from 'react'
 
 type FavoriteType = {
   onClick: Function,
-  favorite?: boolean
+  favorite: boolean
 }
 
 const FavoriteIcon = styled.i`
-  color: ${props => props.favorite && 'yellow'};
-`
-const Favorite = (props: FavoriteType) => (
-  <FavoriteIcon className="material-icons" onClick={props.onClick} favorite={props.favorite}>favorite</FavoriteIcon>
-)
+  color: ${props => props.favorited && 'red'};
+`,
+
+  Favorite = (({ onClick, favorited }): FavoriteType) => (
+    <FavoriteIcon className="material-icons" onClick={onClick} favorited={favorited}>favorite</FavoriteIcon>
+  )
 
 export default Favorite

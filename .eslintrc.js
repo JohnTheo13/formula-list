@@ -28,7 +28,7 @@ module.exports = {
   "class-methods-use-this": 0,
   "one-var": ["error", "always"],
   "arrow-parens": ["error", "as-needed"],
-  "arrow-body-style": ["error", "never"]
+  "arrow-body-style": ["error", "as-needed"]
   },
   overrides: [
     {
