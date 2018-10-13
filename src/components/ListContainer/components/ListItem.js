@@ -4,10 +4,10 @@ import StyledItem from './StyledItem'
 import { DriverShape } from '../../../data/types'
 import NameSection from './NameSection'
 import Favourite from './Favorite'
-import { checkFavoriteExists } from  '../../../data/helpers'
+import { checkFavoriteExists } from '../../../data/helpers'
 
 type ItemType = {
-  driver: DriverShape
+  driver: DriverShape,
 }
 
 class ListItem extends Component<ItemType> {
@@ -20,13 +20,12 @@ class ListItem extends Component<ItemType> {
     }
   }
 
-  componentDidUpdate() {
-
-  }
-
   favoriteUpdate = () => {
     const { driver, updateDriversList } = this.props
     updateDriversList(driver)
+    this.setState(({ favorited }) => ({
+      favorited: !favorited
+    }))
   }
 
   render() {

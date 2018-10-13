@@ -13,7 +13,7 @@ const StyledItem = styled.div`
     width: 100%;
     & > a {
       float: left;
-      margin-right: 8px;
+      margin-right: 12px;
       margin-top: 2px;
     }
   }

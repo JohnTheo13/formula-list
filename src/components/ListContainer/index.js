@@ -7,6 +7,7 @@ class ListContainer extends Component<DriversList> {
 
   render() {
     const { list, title, updateDriversList, favoriteDrivers } = this.props
+
     return (
       <StyledList>
         <div>Drivers for {title} season</div>

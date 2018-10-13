@@ -4,11 +4,12 @@ import React from 'react'
 
 type FavoriteType = {
   onClick: Function,
-  favorite: boolean
+  favorited: boolean
 }
 
 const FavoriteIcon = styled.i`
-  color: ${props => props.favorited && 'red'};
+  color: ${({ favorited }) => (favorited ? '#ee322f' : '#cccbcb')};
+  margin-top: 2px;
 `,
 
   Favorite = (({ onClick, favorited }): FavoriteType) => (
