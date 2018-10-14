@@ -14,16 +14,15 @@ type NameSectionType = {
 }
 
 const StyledSection = styled.div`
+  max-width: 75px;
   display: flex;
   & > div {
     &:first-child {
       margin-right: 4px;
-      color: ${({ position }) => position === '1' && '#ee322f'};
     }
     &:nth-child(2) {
       & > div {
         &:first-child {
-          color: ${({ position }) => position === '1' && '#ee322f'};
           @media (max-width: 650px) {
             max-width: 75px;
             overflow: hidden;

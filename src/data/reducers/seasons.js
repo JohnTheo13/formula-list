@@ -15,21 +15,23 @@ const seasons = (state = initial, action) => {
   switch (action.type) {
     case FETCHING_SEASONS:
       return {
-        ...state,
         isfetching: true,
+        fetched: state.fetched,
+        failedFetch: state.failedFetch,
       }
     case FETCHED_SEASONS:
       return {
-        ...state,
         isfetching:false,
         fetched: true,
+        failedFetch: state.failedFetch,
         list: action.payload
       }
     case FAILED_FETCH_SEASONS:
       return {
-        ...state,
+        fetched: false,
         isfetching: false,
-        failedFetch: true
+        failedFetch: true,
+        list: [],
       }
     default:
       return state

@@ -66,7 +66,7 @@ class ListItem extends Component<ItemType, { favorited: boolean }> {
         <div>{points}</div>
         <div>{wins}</div>
         <div>
-          <a href={url}>wiki</a>
+          <a href={url} target="_blank rel='noreferrer noopener'">wiki</a>
           {listName === 'Your Favorite Drivers'
             ? <i className="material-icons" onClick={this.favoriteUpdate}>remove_circle_outline</i>  // eslint-disable-line
             : <Favourite onClick={this.favoriteUpdate} favorited={favorited} />

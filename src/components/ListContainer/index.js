@@ -27,7 +27,7 @@ class ListContainer extends Component<DriversList> {
       { length } = list
 
     return (
-      <StyledList>
+      <StyledList isSeason={title !== 'Your Favorite Drivers'}>
         <div>{title}</div>
         <ListHeader />
         {

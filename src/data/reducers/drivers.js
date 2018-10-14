@@ -5,25 +5,26 @@ const initial = {
   isfetching: false,
   fetched: false,
   failedFetch: false,
+  driversList: [],
 }
 
 const drivers = (state = initial, action) => {
   switch (action.type) {
     case FETCHING_DRIVERS:
       return {
-        ...state,
+        ...initial,
         isfetching: true,
       }
     case FETCHED_DRIVERS:
       return {
-        ...state,
+        failedFetch: state.failedFetch,
         isfetching: false,
         fetched: true,
         driversList: action.payload,
       }
     case FAILED_FETCH_DRIVERS:
       return {
-        ...state,
+        ...initial,
         isfetching: false,
         failedFetch: true,
         fetched: false,
