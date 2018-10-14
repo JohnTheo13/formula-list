@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { SEASON_CHANGE } from './actionTypes'
 
 const initial = {

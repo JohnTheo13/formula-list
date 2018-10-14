@@ -23,10 +23,16 @@ type DriverShape = {
   positionText: string,
   points: string,
   wins: string,
+  id?: string,
   Driver: DriverType,
   Constructors: Array<Constructor>
 }
 
-type DriversList = Array<DriverShape>
+type DriversList = {
+  isfetching: boolean,
+  fetched: boolean,
+  failedFetch: boolean,
+  driversList: Array<DriverShape>,
+}
 
 export { DriverType, DriverShape, DriversList }

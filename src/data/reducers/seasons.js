@@ -1,7 +1,8 @@
+/* eslint-disable */
 import {
   FETCHING_SEASONS,
   FETCHED_SEASONS,
-  FAILED_FETCH_SEASONS
+  FAILED_FETCH_SEASONS,
 } from './actionTypes'
 
 const initial = {
@@ -32,7 +33,6 @@ const seasons = (state = initial, action) => {
       }
     default:
       return state
-
   }
 }
 

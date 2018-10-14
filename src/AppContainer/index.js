@@ -7,12 +7,29 @@ import ListContainer from '../components/ListContainer'
 import { PromtChoose } from './components'
 import Tabs from '../components/Tabs'
 import { storageAvailable } from '../data/helpers'
+import {
+  SeasonShape,
+  DriversList,
+  SeasonType,
+  DriverShape,
+} from '../data/types'
 
-class AppContainer extends Component {
+type AppType = {
+  getSeasons: Function,
+  getFromStorage: Function,
+  seasons: SeasonShape,
+  drivers: DriversList,
+  activeSeason: SeasonType,
+  updateDriversList: Function,
+  getDrivers: Function,
+  favoriteDrivers: Array<DriverShape>
+}
+
+class AppContainer extends Component<AppType, { favorite: boolean}> {
   constructor(props) {
     super(props)
     this.state = {
-      favourite: false,
+      favorite: false,
     }
   }
 
@@ -26,17 +43,17 @@ class AppContainer extends Component {
     }
   }
 
-  favourite = val => this.setState({ favourite: val }) /* favourites tab is on/off */
+  favorite = val => this.setState({ favorite: val }) /* favorites tab is on/off */
 
   render() {
-    const { favourite } = this.state,
+    const { favorite } = this.state,
       {
         seasons,
         drivers,
         activeSeason,
         updateDriversList,
         getDrivers,
-        favoriteDrivers
+        favoriteDrivers,
       } = this.props
     return (
       <div>
@@ -44,11 +61,11 @@ class AppContainer extends Component {
           <Tabs
             list={seasons.list}
             getDrivers={getDrivers}
-            favourite={this.favourite}
+            favorite={this.favorite}
             activeSeason={activeSeason}
           />
         )}
-        {!favourite
+        {!favorite
           ? drivers.fetched
             ? (
               <ListContainer
@@ -61,7 +78,6 @@ class AppContainer extends Component {
           : favoriteDrivers.length
             ? (
               <ListContainer
-                listName="favorites"
                 list={favoriteDrivers}
                 title="Your Favorite Drivers"
                 updateDriversList={updateDriversList}

@@ -1,9 +1,10 @@
+/* eslint-disable one-var */
 import { FETCHING_DRIVERS, FETCHED_DRIVERS, FAILED_FETCH_DRIVERS } from './actionTypes'
 
 const initial = {
   isfetching: false,
   fetched: false,
-  failedFetch: false
+  failedFetch: false,
 }
 
 const drivers = (state = initial, action) => {
@@ -16,20 +17,19 @@ const drivers = (state = initial, action) => {
     case FETCHED_DRIVERS:
       return {
         ...state,
-        isfetching:false,
+        isfetching: false,
         fetched: true,
-        driversList: action.payload
+        driversList: action.payload,
       }
     case FAILED_FETCH_DRIVERS:
       return {
         ...state,
         isfetching: false,
         failedFetch: true,
-        fetched: false
+        fetched: false,
       }
     default:
       return state
-
   }
 }
 

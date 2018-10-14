@@ -8,15 +8,18 @@ import { checkFavoriteExists } from '../../../data/helpers'
 
 type ItemType = {
   driver: DriverShape,
+  favoriteDrivers: Array<DriverShape>,
+  updateDriversList: Function,
+  listName: string,
 }
 
-class ListItem extends Component<ItemType> {
+class ListItem extends Component<ItemType, { favorited: boolean }> {
   constructor(props) {
     super(props)
     const { driver: { Driver: { driverId } }, favoriteDrivers } = props,
       favorited = checkFavoriteExists(driverId, favoriteDrivers) !== -1
     this.state = {
-      favorited
+      favorited,
     }
   }
 
@@ -24,7 +27,7 @@ class ListItem extends Component<ItemType> {
     const { driver, updateDriversList } = this.props
     updateDriversList(driver)
     this.setState(({ favorited }) => ({
-      favorited: !favorited
+      favorited: !favorited,
     }))
   }
 
@@ -35,14 +38,14 @@ class ListItem extends Component<ItemType> {
           points,
           wins,
           Driver: {
-            url, givenName, familyName, driverId
+            url, givenName, familyName,
           },
-          Constructors: [{ name }]
+          Constructors: [{ name }],
         },
-        listName
+        listName,
       } = this.props,
       { favorited } = this.state
-console.log(this.props.listName);
+
     return (
       <StyledItem>
         <NameSection
@@ -54,7 +57,7 @@ console.log(this.props.listName);
         <div>{wins}</div>
         <div>
           <a href={url}>wiki</a>
-          {listName === 'favorites'
+          {listName === 'Your Favorite Drivers'
             ? <i className="material-icons" onClick={this.favoriteUpdate}>remove_circle_outline</i>  // eslint-disable-line
             : <Favourite onClick={this.favoriteUpdate} favorited={favorited} />
           }

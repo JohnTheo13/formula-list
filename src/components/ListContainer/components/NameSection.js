@@ -27,27 +27,27 @@ const StyledSection = styled.div`
       }
     }
   }
-`
+`,
 
-const nameGenarator = fullname => {
-  const { givenName, familyName } = fullname,
-        initial = givenName.slice(0,1)
-  return `${initial}.${familyName}`
-}
+  nameGenarator = fullname => {
+    const { givenName, familyName } = fullname,
+      initial = givenName.slice(0, 1)
+    return `${initial}.${familyName}`
+  },
 
-const NameSection = (props: NameSectionType) => (
-  <StyledSection>
-      <div>{props.positionText}</div>
+  NameSection = ({ fullname, positionText, constructorName }: { ...NameSectionType }) => (
+    <StyledSection>
+      <div>{positionText}</div>
       <div>
-        <div>{nameGenarator(props.fullname)}</div>
-        <div>{props.constructorName}</div>
+        <div>{nameGenarator(fullname)}</div>
+        <div>{constructorName}</div>
       </div>
-      {props.positionText === '1' &&
+      {positionText === '1' && (
         <div>
           <i className="material-icons">star_rate</i>
-        </div>
+        </div>)
       }
-  </StyledSection>
-)
+    </StyledSection>
+  )
 
 export default NameSection

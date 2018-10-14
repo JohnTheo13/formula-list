@@ -7,11 +7,11 @@ import Image from './components/Image'
 
 const App = () => (
   <Provider store={store}>
-      <div>
-        <Header logo="/images/logo.png">Application</Header>
-        <Image />
-        <AppContainer />
-      </div>
+    <div>
+      <Header logo="/images/logo.png">Application</Header>
+      <Image />
+      <AppContainer />
+    </div>
   </Provider>
 )
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
-const carAnimation =  keyframes`
+const carAnimation = keyframes`
   0% { left: 100%;}
   100%{ left : 0;}
-`
+`,
 
-const Container = styled.div`
+  Container = styled.div`
   overflow: hidden;
   & > div {
     position: relative;
@@ -21,14 +21,14 @@ const Container = styled.div`
       float: left;
     }
   }
-`
-const PromtChoose = () => (
-  <Container>
-    <div>
-      <img alt="racing car" src="/images/car.png" />
-      <div>CHOOSE A SEASON</div>
-    </div>
-  </Container>
-)
+`,
+  PromtChoose = () => (
+    <Container>
+      <div>
+        <img alt="racing car" src="/images/car.png" />
+        <div>CHOOSE A SEASON</div>
+      </div>
+    </Container>
+  )
 
 export default PromtChoose

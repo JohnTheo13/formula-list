@@ -45,7 +45,6 @@ const startfetchig = type => ({ type: FETCHING_[type] }),
       updatedlist = Array.from(favoriteDrivers),
       { Driver: { driverId } } = driver,
       driverIndex = checkFavoriteExists(driverId, updatedlist)
-      console.log(updatedlist);
     if (driverIndex === -1) {
       updatedlist.push({ ...driver, id: driverId })
       dispatch(addToFavorites(updatedlist))

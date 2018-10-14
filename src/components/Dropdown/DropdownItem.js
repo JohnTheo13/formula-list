@@ -17,4 +17,4 @@ const DropdownItem = styled.div`
   }
 `
 
-export default DropdownItem;
+export default DropdownItem

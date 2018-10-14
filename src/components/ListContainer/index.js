@@ -22,14 +22,13 @@ class ListContainer extends Component<DriversList> {
         title,
         updateDriversList,
         favoriteDrivers,
-        listName,
       } = this.props,
       { collapsed } = this.state,
       { length } = list
 
     return (
       <StyledList>
-        <div>Drivers for {title} season</div>
+        <div>{title}</div>
         <ListHeader />
         {
           list.slice(0, 8).map(e => (
@@ -38,7 +37,7 @@ class ListContainer extends Component<DriversList> {
               driver={e}
               updateDriversList={updateDriversList}
               favoriteDrivers={favoriteDrivers}
-              listName={listName}
+              listName={title}
             />))
         }
         <CollapsingContainer collapsed={collapsed}>
@@ -49,7 +48,7 @@ class ListContainer extends Component<DriversList> {
                 driver={e}
                 updateDriversList={updateDriversList}
                 favoriteDrivers={favoriteDrivers}
-                listName={listName}
+                listName={title}
               />))
           }
         </CollapsingContainer>

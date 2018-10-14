@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import React from 'react'
 
-const animation =  keyframes`
+const animation = keyframes`
   20% {margin-left: 0px;}
   30% {margin-left: -100%;}
   50% {margin-left: -100%;}
@@ -10,37 +10,39 @@ const animation =  keyframes`
   80% {margin-left: -300%;}
   90% {margin-left: -300%;}
   100% {margin-left: 0px}
-`
+`,
 
-const SlideContainer = styled.div`
-  background-color: #000000;
-  & > div {
-    overflow: hidden;
-    height: 40%;
-    width: 60%;
-    margin: 0 auto;
+  SlideContainer = styled.div`
+    background-color: #000000;
     & > div {
-      width: 400%;
+      overflow: hidden;
       height: 40%;
-      animation: ${animation} 18s ease infinite;
-      & > img {
-        float: left;
-        height: 100%;
-        width: 25%;
+      width: 60%;
+      margin: 0 auto;
+      & > div {
+        width: 400%;
+        height: 40%;
+        animation: ${animation} 18s ease infinite;
+        & > img {
+          float: left;
+          height: 100%;
+          width: 25%;
+        }
       }
     }
-  }
-`
+`,
 
-const Image = () =>
-  <SlideContainer>
-    <div>
+  Image = () => (
+    <SlideContainer>
       <div>
-        <img src="/images/first.jpg" alt="" />
-        <img src="/images/second.jpg" alt="" />
-        <img src="/images/third.jpg" alt="" />
-        <img src="/images/fourth.jpg" alt="" />
+        <div>
+          <img src="/images/first.jpg" alt="" />
+          <img src="/images/second.jpg" alt="" />
+          <img src="/images/third.jpg" alt="" />
+          <img src="/images/fourth.jpg" alt="" />
+        </div>
       </div>
-    </div>
-  </SlideContainer>
+    </SlideContainer>
+  )
+
 export default Image
