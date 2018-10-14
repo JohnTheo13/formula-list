@@ -4,13 +4,13 @@ import styled from 'styled-components'
 
 type fullnameType = {
   givenName: string,
-  familyName: string
+  familyName: string,
 }
 
 type NameSectionType = {
   positionText: string,
   constructorName: string,
-  fullname: fullnameType
+  fullname: fullnameType,
 }
 
 const StyledSection = styled.div`
@@ -18,15 +18,23 @@ const StyledSection = styled.div`
   & > div {
     &:first-child {
       margin-right: 4px;
+      color: ${({ position }) => position === '1' && '#ee322f'};
     }
-    &:nth-child(3) {
-      margin-left: 8px;
-      & > i {
-        color: #fff824;
-        width: 30px;
+    &:nth-child(2) {
+      & > div {
+        &:first-child {
+          color: ${({ position }) => position === '1' && '#ee322f'};
+          @media (max-width: 650px) {
+            max-width: 75px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
       }
     }
   }
+
 `,
 
   nameGenarator = fullname => {
@@ -36,17 +44,12 @@ const StyledSection = styled.div`
   },
 
   NameSection = ({ fullname, positionText, constructorName }: { ...NameSectionType }) => (
-    <StyledSection>
+    <StyledSection position={positionText}>
       <div>{positionText}</div>
       <div>
         <div>{nameGenarator(fullname)}</div>
         <div>{constructorName}</div>
       </div>
-      {positionText === '1' && (
-        <div>
-          <i className="material-icons">star_rate</i>
-        </div>)
-      }
     </StyledSection>
   )
 

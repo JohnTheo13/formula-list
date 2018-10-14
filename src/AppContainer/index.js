@@ -83,7 +83,7 @@ class AppContainer extends Component<AppType, { favorite: boolean}> {
                 updateDriversList={updateDriversList}
                 favoriteDrivers={favoriteDrivers}
               />)
-            : <div>SKATA3</div>
+            : <div>Your favorite drivers list is empty</div>
         }
       </div>
     )

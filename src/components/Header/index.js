@@ -13,6 +13,7 @@ const StyledHeader = styled.header`
   color: ${({ theme: { headerText } }) => headerText};
   height: 65px;
   width: 100%;
+  font-size: 32px;
   & > img {
     float: left;
     height: 80%;
@@ -21,7 +22,9 @@ const StyledHeader = styled.header`
   }
   & > span {
     margin-left: 20px;
-    font-size: 32px;
+  }
+  @media (max-width: 650px) {
+    font-size: 24px;
   }
 `,
 

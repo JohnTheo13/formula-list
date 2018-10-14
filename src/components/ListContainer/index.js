@@ -53,10 +53,11 @@ class ListContainer extends Component<DriversList> {
           }
         </CollapsingContainer>
         <div onClick={this.toggle /* eslint-disable-line */}>
-          {collapsed
-            ? <i className="material-icons">keyboard_arrow_down</i>
-            : <i className="material-icons">keyboard_arrow_up</i>
-          }
+          {length > 8 && (
+            collapsed
+              ? <i className="material-icons">keyboard_arrow_down</i>
+              : <i className="material-icons">keyboard_arrow_up</i>
+          )}
         </div>
       </StyledList>
     )
