@@ -20,7 +20,6 @@ const StyledItem = styled.div`
       margin-top: 2px;
     }
     & > i {
-      color: #cccbcb;
       cursor: pointer;
       &:hover {
         color: #ee322f;

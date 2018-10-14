@@ -8,7 +8,7 @@ type FavoriteType = {
 }
 
 const FavoriteIcon = styled.i`
-  color: ${({ favorited }) => (favorited ? '#ee322f' : '#cccbcb')};
+  color: ${({ favorited }) => (favorited ? '#ee322f !important' : '#cccbcb !important')};
   margin-top: 2px;
 `,
 
