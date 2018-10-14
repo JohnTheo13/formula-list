@@ -55,7 +55,7 @@ console.log(this.props.listName);
         <div>
           <a href={url}>wiki</a>
           {listName === 'favorites'
-            ? <i className="material-icons" onClick={this.favoriteUpdate}>remove_circle_outline</i>
+            ? <i className="material-icons" onClick={this.favoriteUpdate}>remove_circle_outline</i>  // eslint-disable-line
             : <Favourite onClick={this.favoriteUpdate} favorited={favorited} />
           }
         </div>

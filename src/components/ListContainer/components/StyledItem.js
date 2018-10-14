@@ -5,6 +5,9 @@ const StyledItem = styled.div`
   height: fit-content;
   justify-content: space-between;
   padding: 8px 16px;
+  line-height: 1.2;
+  border-bottom: 1px solid #cccbcb;
+  padding-left: 8px;
   &:hover {
     background-color: #d2d2d2;
   }
@@ -15,6 +18,13 @@ const StyledItem = styled.div`
       float: left;
       margin-right: 12px;
       margin-top: 2px;
+    }
+    & > i {
+      color: #cccbcb;
+      cursor: pointer;
+      &:hover {
+        color: #ee322f;
+      }
     }
   }
 `
