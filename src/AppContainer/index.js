@@ -53,12 +53,21 @@ class AppContainer extends Component {
             ? (
               <ListContainer
                 list={drivers.driversList}
-                title={activeSeason.season}
+                title={`Drivers for ${activeSeason.season} season`}
                 updateDriversList={updateDriversList}
                 favoriteDrivers={favoriteDrivers}
               />)
             : <PromtChoose />
-          : <div>SKATA3</div>
+          : favoriteDrivers.length
+            ? (
+              <ListContainer
+                listName="favorites"
+                list={favoriteDrivers}
+                title="Your Favorite Drivers"
+                updateDriversList={updateDriversList}
+                favoriteDrivers={favoriteDrivers}
+              />)
+            : <div>SKATA3</div>
         }
       </div>
     )

@@ -38,10 +38,11 @@ class ListItem extends Component<ItemType> {
             url, givenName, familyName, driverId
           },
           Constructors: [{ name }]
-        }
+        },
+        listName
       } = this.props,
       { favorited } = this.state
-
+console.log(this.props.listName);
     return (
       <StyledItem>
         <NameSection
@@ -53,7 +54,10 @@ class ListItem extends Component<ItemType> {
         <div>{wins}</div>
         <div>
           <a href={url}>wiki</a>
-          <Favourite onClick={this.favoriteUpdate} favorited={favorited} />
+          {listName === 'favorites'
+            ? <i className="material-icons" onClick={this.favoriteUpdate}>remove_circle_outline</i>
+            : <Favourite onClick={this.favoriteUpdate} favorited={favorited} />
+          }
         </div>
       </StyledItem>
     )

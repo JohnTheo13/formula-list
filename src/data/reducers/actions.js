@@ -42,19 +42,21 @@ const startfetchig = type => ({ type: FETCHING_[type] }),
 
   updateDriversList = driver => dispatch => {
     const { favoriteDrivers } = store.getState(),
+      updatedlist = Array.from(favoriteDrivers),
       { Driver: { driverId } } = driver,
-      driverIndex = checkFavoriteExists(driverId, favoriteDrivers)
+      driverIndex = checkFavoriteExists(driverId, updatedlist)
+      console.log(updatedlist);
     if (driverIndex === -1) {
-      favoriteDrivers.push({ ...driver, id: driverId })
-      dispatch(addToFavorites(favoriteDrivers))
+      updatedlist.push({ ...driver, id: driverId })
+      dispatch(addToFavorites(updatedlist))
       if (storageAvailable('localStorage')) {
-        window.localStorage.setItem('favoriteDrivers', JSON.stringify(favoriteDrivers))
+        window.localStorage.setItem('favoriteDrivers', JSON.stringify(updatedlist))
       }
     } else {
-      favoriteDrivers.splice(driverIndex, 1)
-      dispatch((removeFromFavorites(favoriteDrivers)))
+      updatedlist.splice(driverIndex, 1)
+      dispatch((removeFromFavorites(updatedlist)))
       if (storageAvailable('localStorage')) {
-        window.localStorage.setItem('favoriteDrivers', JSON.stringify(favoriteDrivers))
+        window.localStorage.setItem('favoriteDrivers', JSON.stringify(updatedlist))
       }
     }
   }
