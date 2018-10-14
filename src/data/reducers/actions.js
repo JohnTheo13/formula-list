@@ -15,7 +15,7 @@ const startfetchig = type => ({ type: FETCHING_[type] }),
   fetchedSeasons = (type, list) => ({ type: FETCED_[type], payload: list }),
   failedFetch = type => ({ type: FAILED_FETCH_[type] }),
   seasonChange = season => ({ type: SEASON_CHANGE, payload: season }),
-  updateFavorites = favorites => ({ type: ADD_TO_FAVORITES, payload: favorites }),
+  addToFavorites = favorites => ({ type: ADD_TO_FAVORITES, payload: favorites }),
   removeFromFavorites = favorites => ({ type: REMOVE_FROM_FAVORITES, payload: favorites }),
   getFromStorage = favorites => ({ type: GET_FROM_STORAGE, payload: favorites }),
 
@@ -45,8 +45,8 @@ const startfetchig = type => ({ type: FETCHING_[type] }),
       { Driver: { driverId } } = driver,
       driverIndex = checkFavoriteExists(driverId, favoriteDrivers)
     if (driverIndex === -1) {
-      favoriteDrivers.push({ id: driverId, driver: { ...driver } })
-      dispatch(updateFavorites(favoriteDrivers))
+      favoriteDrivers.push({ ...driver, id: driverId })
+      dispatch(addToFavorites(favoriteDrivers))
       if (storageAvailable('localStorage')) {
         window.localStorage.setItem('favoriteDrivers', JSON.stringify(favoriteDrivers))
       }

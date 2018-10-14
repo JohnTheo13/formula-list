@@ -8,7 +8,7 @@ const favoriteDrivers = (state = [], action) => {
     case REMOVE_FROM_FAVORITES:
       return action.payload
     case GET_FROM_STORAGE:
-      return action.payload
+      return action.payload ? action.payload : state
     default:
       return state
   }
