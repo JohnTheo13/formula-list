@@ -26,11 +26,7 @@ class ListItem extends Component<ItemType, { favorited: boolean }> {
   shouldComponentUpdate(nextProps, nextState) {
     const { favorited } = this.state,
       { listName } = this.props
-
-    if (nextState.favorited !== favorited || nextProps.listName !== listName) {
-      return true
-    }
-    return false
+    return nextState.favorited !== favorited || nextProps.listName !== listName
   }
 
   favoriteUpdate = () => {
