@@ -6,7 +6,7 @@ const ListHeader = () => (
     <div>
       <div><strong>Name</strong></div>
     </div>
-    <div><strong>Ponts</strong></div>
+    <div><strong>Points</strong></div>
     <div><strong>Wins</strong></div>
     <div>
       <div>Bio</div>
