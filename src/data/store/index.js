@@ -19,7 +19,7 @@ const reducers = combineReducers({
     favoriteDrivers,
   }),
 
-  reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__? window.__REDUX_DEVTOOLS_EXTENSION__() : {}, // eslint-disable-line
+  reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f, // eslint-disable-line
 
   store = createStore(
     reducers,
