@@ -5,7 +5,7 @@ You can find a live version [here](http://formula-app.ksulourgeio.gr/)
 #### Install depedencies:
 $ yarn
 #### Run the project:
-$ yarn start to start the react-app
+$ yarn start
 
 ### Project's details
 This repository is made to showcase the use of [React](https://reactjs.org/), [Redux](https://redux.js.org/) my favorite [Styled-Components](https://www.styled-components.com/) and other Javascript best practices.
