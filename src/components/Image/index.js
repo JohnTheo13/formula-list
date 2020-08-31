@@ -1,5 +1,6 @@
-import styled, { keyframes } from 'styled-components'
 import React from 'react'
+import styled, { keyframes } from 'styled-components'
+import CollapsedContainer from '../CollapsingContainer'
 
 const animation = keyframes`
   20% {margin-left: 0px;}
@@ -30,19 +31,39 @@ const animation = keyframes`
         }
       }
     }
-`,
+`;
 
-  Image = () => (
-    <SlideContainer>
-      <div>
-        <div>
-          <img src="/images/first.jpg" alt="" />
-          <img src="/images/second.jpg" alt="" />
-          <img src="/images/third.jpg" alt="" />
-          <img src="/images/fourth.jpg" alt="" />
-        </div>
-      </div>
-    </SlideContainer>
-  )
+class Image extends React.Component<{}, { collapsed: boolean }> {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      collapsed: true,
+    }
+  }
+
+  toogle = () => this.setState(({ collapsed }) => ({ collapsed: !collapsed }))
+
+  render() {
+    const { collapsed } = this.state
+    return (
+      <>
+        <button type="button" onClick={this.toogle}>open slideshow</button>
+        <CollapsedContainer collapsed={collapsed}>
+          <SlideContainer>
+            <div>
+              <div>
+                <img src="/images/first.jpg" alt="" />
+                <img src="/images/second.jpg" alt="" />
+                <img src="/images/third.jpg" alt="" />
+                <img src="/images/fourth.jpg" alt="" />
+              </div>
+            </div>
+          </SlideContainer>
+        </CollapsedContainer>
+      </>
+    )
+  }
+}
 
 export default Image
